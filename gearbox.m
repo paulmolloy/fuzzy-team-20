@@ -19,7 +19,7 @@ fis = addMF(fis,"throttle","gaussmf",[1 0],'Name',"closed");
 
 fis = addInput(fis, [0, 1], "Name", "friction");
 fis = addMF(fis,"friction","gaussmf",[.3 0],'Name',"slippy");
-fis = addMF(fis,"friction","gaussmf",[.3 .5],'Name',"stable");
+fis = addMF(fis,"friction","gaussmf",[.6 .5],'Name',"stable");
 fis = addMF(fis,"friction","gaussmf",[.3 1],'Name',"rough");
 
 fis = addOutput(fis,[1 5],'Name',"gear");
