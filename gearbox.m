@@ -6,21 +6,21 @@ fis = addMF(fis,"fluid_temp","trapmf",[-2 0 90 110],'Name',"normal");
 fis = addMF(fis,"fluid_temp","trapmf",[90 110 150 150],'Name',"high");
 
 fis = addInput(fis, [0, 150], "Name", "speed");
-fis = addMF(fis,"speed","gaussmf",[15 15],'Name',"very slow");
-fis = addMF(fis,"speed","gaussmf",[15 45],'Name',"slow");
-fis = addMF(fis,"speed","gaussmf",[15 75],'Name',"moderate");
-fis = addMF(fis,"speed","gaussmf",[15 105],'Name',"fast");
-fis = addMF(fis,"speed","gaussmf",[15 135],'Name',"very fast");
+fis = addMF(fis,"speed","gaussmf",[30 0],'Name',"very slow");
+fis = addMF(fis,"speed","gaussmf",[30 30],'Name',"slow");
+fis = addMF(fis,"speed","gaussmf",[30 75],'Name',"moderate");
+fis = addMF(fis,"speed","gaussmf",[30 120],'Name',"fast");
+fis = addMF(fis,"speed","gaussmf",[30 150],'Name',"very fast");
 
 fis = addInput(fis, [0, 5], "Name", "throttle"); % Volts
-fis = addMF(fis,"throttle","gaussmf",[1 4],'Name',"open");
-fis = addMF(fis,"throttle","gaussmf",[1 2.5],'Name',"partially open");
-fis = addMF(fis,"throttle","gaussmf",[.35 .35],'Name',"closed");
+fis = addMF(fis,"throttle","gaussmf",[1 5],'Name',"open");
+fis = addMF(fis,"throttle","gaussmf",[2 2.5],'Name',"partially open");
+fis = addMF(fis,"throttle","gaussmf",[1 0],'Name',"closed");
 
 fis = addInput(fis, [0, 1], "Name", "friction");
-fis = addMF(fis,"friction","gaussmf",[.2 .2],'Name',"slippy");
-fis = addMF(fis,"friction","gaussmf",[.2 .5],'Name',"stable");
-fis = addMF(fis,"friction","gaussmf",[.2 .8],'Name',"rough");
+fis = addMF(fis,"friction","gaussmf",[.3 0],'Name',"slippy");
+fis = addMF(fis,"friction","gaussmf",[.3 .5],'Name',"stable");
+fis = addMF(fis,"friction","gaussmf",[.3 1],'Name',"rough");
 
 fis = addOutput(fis,[1 5],'Name',"gear");
 fis = addMF(fis,"gear","trimf",[1 1 1.5],'Name',"first");
