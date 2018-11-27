@@ -1,8 +1,7 @@
-fis = newfis('gearbox')
+fis = newfis('gearbox');
 fis.name
 fis.input
 fis = addInput(fis, [0, 150], "Name", "fluid_temp");
-%fis = addMF(fis,"fluid_temp","gaussmf",[50 25],'Name',"low");
 fis = addMF(fis,"fluid_temp","trapmf",[-2 0 90 110],'Name',"normal");
 fis = addMF(fis,"fluid_temp","trapmf",[90 110 150 150],'Name',"high");
 
@@ -38,14 +37,15 @@ fis = addMF(fis,"gear","trimf",[4.5 5 6],'Name',"fifth");
 % idx of membership function of output (gear number), 
 % rule wright 0 or 1,
 % fuzzy operator 1==AND 2==OR
+% TODO: Add more rules.
 rulesList = [2 1 0 0 2 1 1;  % if very_slow && high temp -> second
-             1 1 0 0 1 1 1;  % if very_slow && normal temp-≥ first 
-             
+             1 1 0 0 1 1 1;  % if very_slow && normal temp-≥ first
              0 2 0 0 2 1 1; % if slow -> second
              0 5 0 0 5 1 1]; % if very_fast -> fifth
 fis = addRule(fis, rulesList);
+
 fis.output
-plotmf(fis,"input",1)
+plotmf(fis,"input",2)
 
 inputs = [60 15 4.5 .78; % normal temp, very slow, throttle open, rough
           102 15 4.5 .78; % high temp, very slow, throttle open, rough
@@ -54,3 +54,4 @@ inputs = [60 15 4.5 .78; % normal temp, very slow, throttle open, rough
     ]
 results = evalfis(fis, inputs)
 rounded_gear = round(results)
+plotfis(fis)
