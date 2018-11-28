@@ -1,6 +1,7 @@
 fis = newfis('gearbox');
 fis.name
 fis.input
+fis = setfis(fis,'defuzzmethod','mom')
 fis = addInput(fis, [0, 150], "Name", "fluid_temp");
 fis = addMF(fis,"fluid_temp","trapmf",[0 0 90 110],'Name',"normal");
 fis = addMF(fis,"fluid_temp","trapmf",[90 110 150 150],'Name',"high");
@@ -77,20 +78,21 @@ rulesList= [
 fis = addRule(fis, rulesList);
 
 fis.output
-plotmf(fis,"input",2)
+plotmf(fis,"output",1)
 
         % Temp  Speed  Throttle expected_gear  
 inputs = [
-          0 15 0 1;
+          0 15 0 2;
           1 1 0 1;
           40 1 0 1;
           40 1 4.5 1; % normal temp, very slow, throttle open, rough
           120 15 4.5 1; % high temp, very slow, throttle open, rough
-          60 50 4.5 3; % normal temp, slow, throttle open, rough
+          60 49 4.5 3; % normal temp, slow, throttle open, rough
           60 140 4.5 5; % normal temp, very fast, throttle open, rough
     ]
 inputs(:, 1:end-1)
-results = evalfis(fis, inputs(:, 1:end-1))
+showrule(fis,'Format','symbolic')
+results = evalfis(fis, [60 49 4.5])
 rounded_gear = round(results)
 %plotfis(fis)
 surfview(fis)
