@@ -82,13 +82,15 @@ plotmf(fis,"output",1)
 
         % Temp  Speed  Throttle expected_gear  
 inputs = [
-          0 15 0 2;
-          1 1 0 1;
-          40 1 0 1;
-          40 1 4.5 1; % normal temp, very slow, throttle open, rough
-          120 15 4.5 1; % high temp, very slow, throttle open, rough
-          60 49 4.5 3; % normal temp, slow, throttle open, rough
-          60 140 4.5 5; % normal temp, very fast, throttle open, rough
+          10 40 4.5; % normal temp, mid speed, throttle open -> 3rd
+          5  5  4.9;  % normal temp, very low speed , throttle open -≥ 1
+          100 5  4.9;  % high temp, very low speed , throttle open -≥ 2
+          120  130  4.99;  % high temp, very high speed , throttle open -≥ 5
+          
+          90 50 0       % hot temp, med speed , closed throttle ->3
+          10 120 3.5    % normal temp, v. fast speed, p_open throttle -> 5
+          110 20 1.6    % hot temp, slow speed, p_open throttle -> 3
+          0 3 1         % normal temp, very slow speed, p_open throttle -> 1
     ]
 inputs(:, 1:end-1)
 showrule(fis,'Format','symbolic')
